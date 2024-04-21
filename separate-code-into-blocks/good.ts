@@ -15,6 +15,15 @@ function validateUser(user: any) {
   }
 }
 
+
+
+async function handleUser(id: number) {
+  const user = await fetchUser(id);
+  validateUser(user);
+  const processedUser = processUser(user);
+  return processedUser;
+}
+
 function processUser(user: any) {
   try {
     // TODO: Add some complex processing...
@@ -23,11 +32,4 @@ function processUser(user: any) {
     console.error(error);
     throw error;
   }
-}
-
-async function handleUser(id: number) {
-  const user = await fetchUser(id);
-  validateUser(user);
-  const processedUser = processUser(user);
-  return processedUser;
 }
